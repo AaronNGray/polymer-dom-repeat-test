@@ -1,0 +1,44 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="dom-repeat-test">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>[[title]]!</h2>
+    <template is="dom-repeat" items="{{employees}}">
+        <div>First name: <span>{{item.first}}</span></div>
+        <div>Last name: <span>{{item.last}}</span></div>
+    </template>
+
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class DomRepeatTest extends Polymer.Element {
+      static get is() { return 'dom-repeat-test'; }
+      static get properties() {
+        return {
+          title: {
+            type: String,
+            value: 'dom-repeat-test'
+          },
+          employees: {
+            type: Array,
+            value: [
+              {first: 'Bob', last: 'Smith'},
+              {first: 'Sally', last: 'Johnson'}
+            ]
+          }
+        };
+      }
+    }
+
+    window.customElements.define(DomRepeatTest.is, DomRepeatTest);
+  </script>
+</dom-module>
